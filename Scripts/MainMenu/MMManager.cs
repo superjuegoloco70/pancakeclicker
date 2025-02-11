@@ -8,6 +8,10 @@ public class MMManager : MonoBehaviour
         SceneManager.LoadScene(sceneName:"Game");
     }
 
+    public void Cheats(){
+        PlayerStats.money = 999999999;
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

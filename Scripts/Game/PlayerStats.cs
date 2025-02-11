@@ -11,8 +11,12 @@ public static class PlayerStats
     public static double efficiencyPower = 1;
     public static int efficiencyCost = 100;
     public static int primaryLvl = 0;
-    public static int primaryCost = 1000;
+    public static int primaryCost = 100;
     public static int secondaryLvl = 0;
-    public static int secondaryCost = 100000;
+    public static int secondaryCost = 10000;
+    public static int uniEcoCost = 100000;
+    public static int uniEcoLvl = 0;
+    public static int uniFoodLvl = 0;
+    public static int uniFoodCost = 100000;
 
 }

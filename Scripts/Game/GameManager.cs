@@ -4,8 +4,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TMP_Text moneyCounter, workHarderLvlCostTxt, workHarderMaxLvlTxt, effLvlCostTxt, effMaxLvlTxt, primaryCostTxt, primaryLvlTxt, secondaryCostTxt, 
-                    secondaryLvlTxt;
-    [SerializeField] GameObject main, study;
+                    secondaryLvlTxt, uniEcoLvlTxt, uniEcoCostTxt, uniFoodLvlTxt, uniFoodCostTxt;
+    [SerializeField] GameObject main, study, secondaryUI, uniEcoUI, uniFoodUI;
     [SerializeField] GameObject story;
 
     void Start()
@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
         secondaryCostTxt.text = "Coste: $" + PlayerStats.secondaryCost;
         primaryLvlTxt.text = "Nivel: " + PlayerStats.primaryLvl + "/6";
         secondaryLvlTxt.text = "Nivel: " + PlayerStats.secondaryLvl + "/6";
+        uniEcoLvlTxt.text = "Nivel: " + PlayerStats.uniEcoLvl + "/5";
+        uniEcoCostTxt.text = "Coste: $" + PlayerStats.uniEcoCost;
+        uniFoodLvlTxt.text = "Nivel: " + PlayerStats.uniFoodLvl + "/4";
+        uniFoodCostTxt.text = "Coste: $" + PlayerStats.uniFoodCost;
     }
 
     public void ContinueStory(){
@@ -71,7 +75,15 @@ public class GameManager : MonoBehaviour
             moneyCounter.text = "$" + PlayerStats.money;
             workHarderMaxLvlTxt.text = "Nivel: " + PlayerStats.workHarderLevel + "/" + PlayerStats.maxLvl;
             effMaxLvlTxt.text = "Nivel: " + PlayerStats.efficiencyLvl + "/" + PlayerStats.maxLvl;
+            if(PlayerStats.primaryLvl == 6){
+                secondaryUI.SetActive(true);
+                PlayerStats.maxLvl += 10;
+                workHarderMaxLvlTxt.text = "Nivel: " + PlayerStats.workHarderLevel + "/" + PlayerStats.maxLvl;
+                effMaxLvlTxt.text = "Nivel: " + PlayerStats.efficiencyLvl + "/" + PlayerStats.maxLvl;
+            }
+            
         }
+        
     }
 
     public void LevelSecondary(){
@@ -85,7 +97,51 @@ public class GameManager : MonoBehaviour
             moneyCounter.text = "$" + PlayerStats.money;
             workHarderMaxLvlTxt.text = "Nivel: " + PlayerStats.workHarderLevel + "/" + PlayerStats.maxLvl;
             effMaxLvlTxt.text = "Nivel: " + PlayerStats.efficiencyLvl + "/" + PlayerStats.maxLvl;
+            if(PlayerStats.secondaryLvl == 6){
+                uniEcoUI.SetActive(true);
+                uniFoodUI.SetActive(true);
+                PlayerStats.maxLvl += 10;
+                workHarderMaxLvlTxt.text = "Nivel: " + PlayerStats.workHarderLevel + "/" + PlayerStats.maxLvl;
+                effMaxLvlTxt.text = "Nivel: " + PlayerStats.efficiencyLvl + "/" + PlayerStats.maxLvl;
+            }
+            
         }
+        
+    }
+
+    public void LevelUniEco(){
+        if(PlayerStats.money >= PlayerStats.uniEcoCost && PlayerStats.uniEcoLvl < 5){
+            PlayerStats.money -= PlayerStats.uniEcoCost;
+            PlayerStats.uniEcoLvl++;
+            PlayerStats.maxLvl++;
+            uniEcoLvlTxt.text = "Nivel: " + PlayerStats.uniEcoLvl + "/5";
+            uniEcoCostTxt.text = "Coste: $" + PlayerStats.uniEcoCost;
+            moneyCounter.text = "$" + PlayerStats.money;
+            workHarderMaxLvlTxt.text = "Nivel: " + PlayerStats.workHarderLevel + "/" + PlayerStats.maxLvl;
+            effMaxLvlTxt.text = "Nivel: " + PlayerStats.efficiencyLvl + "/" + PlayerStats.maxLvl;
+            if(PlayerStats.uniEcoLvl == 5){
+            PlayerStats.maxLvl += 10;
+            workHarderMaxLvlTxt.text = "Nivel: " + PlayerStats.workHarderLevel + "/" + PlayerStats.maxLvl;
+            effMaxLvlTxt.text = "Nivel: " + PlayerStats.efficiencyLvl + "/" + PlayerStats.maxLvl;
+            }
+        }
+        
+    }
+
+    public void LevelUniFood(){
+        if(PlayerStats.money >= PlayerStats.uniFoodCost && PlayerStats.uniFoodLvl < 4){
+            PlayerStats.money -= PlayerStats.uniFoodCost;
+            PlayerStats.uniFoodLvl++;
+            uniFoodLvlTxt.text = "Nivel: " + PlayerStats.uniFoodLvl + "/4";
+            uniFoodCostTxt.text = "Coste: $" + PlayerStats.uniFoodCost;
+            if(PlayerStats.uniFoodLvl == 4){
+            PlayerStats.maxLvl += 10;
+            workHarderMaxLvlTxt.text = "Nivel: " + PlayerStats.workHarderLevel + "/" + PlayerStats.maxLvl;
+            effMaxLvlTxt.text = "Nivel: " + PlayerStats.efficiencyLvl + "/" + PlayerStats.maxLvl;
+            }
+
+        }
+        
     }
 
     // Update is called once per frame
