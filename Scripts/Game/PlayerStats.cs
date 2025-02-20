@@ -18,5 +18,12 @@ public static class PlayerStats
     public static int uniEcoLvl = 0;
     public static int uniFoodLvl = 0;
     public static int uniFoodCost = 100000;
+    public static bool butterBought = false;
+    public static bool flourBought = false;
+    public static bool cookingPowderBought = false;
+    public static bool sugarBought = false;
+    public static bool saltBought = false;
+    public static bool milkBought = false;
+    public static bool eggBought = false;
 
 }

@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] TMP_Text moneyCounter, workHarderLvlCostTxt, workHarderMaxLvlTxt, effLvlCostTxt, effMaxLvlTxt, primaryCostTxt, primaryLvlTxt, secondaryCostTxt, 
                     secondaryLvlTxt, uniEcoLvlTxt, uniEcoCostTxt, uniFoodLvlTxt, uniFoodCostTxt;
-    [SerializeField] GameObject main, study, secondaryUI, uniEcoUI, uniFoodUI;
+    [SerializeField] GameObject main, study, secondaryUI, uniEcoUI, uniFoodUI, cookButton, cookMenu;
     [SerializeField] GameObject story;
 
     void Start()
@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         main.SetActive(false);
         story.SetActive(true);
         study.SetActive(false);
+        cookMenu.SetActive(false);
         workHarderLvlCostTxt.text = "Coste: $" + PlayerStats.workHarderCost;
         workHarderMaxLvlTxt.text = "Nivel: " + PlayerStats.workHarderLevel + "/" + PlayerStats.maxLvl;
         effLvlCostTxt.text = "Coste: $" + PlayerStats.efficiencyCost;
@@ -134,7 +135,9 @@ public class GameManager : MonoBehaviour
             PlayerStats.uniFoodLvl++;
             uniFoodLvlTxt.text = "Nivel: " + PlayerStats.uniFoodLvl + "/4";
             uniFoodCostTxt.text = "Coste: $" + PlayerStats.uniFoodCost;
+            moneyCounter.text = "$" + PlayerStats.money;
             if(PlayerStats.uniFoodLvl == 4){
+            cookButton.SetActive(true);
             PlayerStats.maxLvl += 10;
             workHarderMaxLvlTxt.text = "Nivel: " + PlayerStats.workHarderLevel + "/" + PlayerStats.maxLvl;
             effMaxLvlTxt.text = "Nivel: " + PlayerStats.efficiencyLvl + "/" + PlayerStats.maxLvl;
@@ -144,9 +147,5 @@ public class GameManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
