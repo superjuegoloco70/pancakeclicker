@@ -18,6 +18,27 @@ public class CookManager : MonoBehaviour
         saltTxt.text = "Coste: $"+ingCost+"/Comprado: NO";
         milkTxt.text = "Coste: $"+ingCost+"/Comprado: NO";
         eggTxt.text = "Coste: $"+ingCost+"/Comprado: NO";
+        if(PlayerStats.butterBought){
+            butterTxt.text = "Coste: $"+ingCost+"/Comprado: SI";
+        }
+        if(PlayerStats.flourBought){
+            flourTxt.text = "Coste: $"+ingCost+"/Comprado: SI";
+        }
+        if(PlayerStats.cookingPowderBought){
+            cookingPowderTxt.text = "Coste: $"+ingCost+"/Comprado: SI";
+        }
+        if(PlayerStats.sugarBought){
+            sugarTxt.text = "Coste: $"+ingCost+"/Comprado: SI";
+        }
+        if(PlayerStats.saltBought){
+            saltTxt.text = "Coste: $"+ingCost+"/Comprado: SI";
+        }
+        if(PlayerStats.milkBought){
+            milkTxt.text = "Coste: $"+ingCost+"/Comprado: SI";
+        }
+        if(PlayerStats.eggBought){
+            eggTxt.text = "Coste: $"+ingCost+"/Comprado: SI";
+        }
     }
 
     public void BuyButter(){
